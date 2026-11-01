@@ -1,0 +1,429 @@
+
+
+<div class="fa-page">
+
+    <!-- HEADER HALAMAN -->
+    <div class="fa-page-heading">
+        <div>
+            <span class="fa-eyebrow">PRESENSI RAPAT</span>
+            <h2>Form Kehadiran</h2>
+            <p>Silakan isi data kehadiran rapat dengan lengkap.</p>
+        </div>
+
+        <div class="fa-date-badge">
+            <span>▦</span>
+            <span id="headerDate">01 November 2026</span>
+        </div>
+    </div>
+
+    <!-- FORM UTAMA -->
+    <form id="formAbsensi" class="fa-main-card" method="POST">
+
+        <!-- BAGIAN ATAS -->
+        <div class="fa-form-heading">
+            <div>
+                <span class="fa-heading-icon">▦</span>
+                <h3>Kehadiran — Form Absensi</h3>
+                <p>Lengkapi identitas dan konfirmasi kehadiran Anda.</p>
+            </div>
+
+            <div class="fa-online">
+                <span class="fa-online-dot"></span>
+                Sistem Aktif
+            </div>
+        </div>
+
+        <!-- GRID FORM -->
+        <div class="fa-content-grid">
+
+            <!-- KOLOM KIRI -->
+            <section class="fa-panel fa-detail-panel">
+
+                <div class="fa-panel-heading">
+                    <span class="fa-panel-icon">♙</span>
+                    <h3>Detail Kehadiran</h3>
+                </div>
+
+                <!-- NAMA -->
+                <div class="fa-field">
+                    <label for="namaPeserta">Nama Peserta</label>
+
+                    <div class="fa-input-wrap">
+                        <span class="fa-input-icon">♙</span>
+                        <input
+                            type="text"
+                            id="namaPeserta"
+                            name="nama_peserta"
+                            placeholder="Masukkan nama peserta"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- ID -->
+                <div class="fa-field">
+                    <label for="idPeserta">ID Peserta</label>
+
+                    <div class="fa-input-wrap">
+                        <span class="fa-input-icon">▣</span>
+                        <input
+                            type="text"
+                            id="idPeserta"
+                            name="id_peserta"
+                            placeholder="Masukkan ID peserta"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- RAPAT -->
+                <div class="fa-field">
+                    <label for="pilihRapat">Pilih Rapat</label>
+
+                    <div class="fa-input-wrap">
+                        <span class="fa-input-icon">♧</span>
+
+                        <select id="pilihRapat" name="id_rapat" required>
+                            <option value="">Pilih rapat</option>
+                            <option value="1">Rapat 1</option>
+                            <option value="2">Rapat 2</option>
+                            <option value="3">Rapat 3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- STATUS -->
+                <div class="fa-field fa-status-field">
+                    <label>Status Kehadiran</label>
+
+                    <div class="fa-status-options">
+
+                        <label class="fa-status-option active">
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Hadir"
+                                checked
+                            >
+                            <span class="fa-status-check">✓</span>
+                            Hadir
+                        </label>
+
+                        <label class="fa-status-option">
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Izin"
+                            >
+                            <span class="fa-status-check">○</span>
+                            Izin
+                        </label>
+
+                        <label class="fa-status-option">
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Sakit"
+                            >
+                            <span class="fa-status-check">○</span>
+                            Sakit
+                        </label>
+
+                        <label class="fa-status-option">
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Alpha"
+                            >
+                            <span class="fa-status-check">○</span>
+                            Alpha
+                        </label>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- KOLOM KANAN -->
+            <div class="fa-right-column">
+
+                <!-- JAM DIGITAL -->
+                <section class="fa-panel fa-clock-panel">
+
+                    <div class="fa-clock-header">
+                        <div class="fa-clock-meta">
+                            <span class="fa-clock-date" id="clockDate">
+                                Minggu, 01 November 2026
+                            </span>
+
+                            <span class="fa-clock-divider">|</span>
+
+                            <span class="fa-clock-title">
+                                ◷ Jam Digital
+                            </span>
+                        </div>
+
+                        <span class="fa-clock-zone">WITA</span>
+                    </div>
+
+                    <div class="fa-clock-time" id="digitalClock">
+                        17:53:26
+                    </div>
+
+                    <div class="fa-clock-caption">
+                        Waktu Indonesia Tengah
+                    </div>
+
+                </section>
+
+                <!-- TANDA TANGAN -->
+                <section class="fa-panel fa-signature-panel">
+
+                    <div class="fa-section-heading">
+                        <h3>Tanda Tangan</h3>
+
+                        <button
+                            type="button"
+                            class="fa-clear-btn"
+                            id="clearSignature"
+                        >
+                            Hapus
+                        </button>
+                    </div>
+
+                    <div class="fa-signature-box">
+                        <canvas id="signatureCanvas"></canvas>
+                    </div>
+
+                    <div class="fa-signature-caption">
+                        <span>✎</span>
+                        Tanda tangani di sini
+                    </div>
+
+                    <input
+                        type="hidden"
+                        name="tanda_tangan"
+                        id="signatureData"
+                    >
+
+                </section>
+
+                <!-- CATATAN -->
+                <section class="fa-panel fa-notes-panel">
+
+                    <h3>Catatan</h3>
+
+                    <div class="fa-notes-wrap">
+                        <textarea
+                            name="catatan"
+                            placeholder="Tambahkan catatan (opsional)..."
+                            rows="2"
+                        ></textarea>
+
+                        <span>▤</span>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- TOMBOL KIRIM -->
+        <div class="fa-submit-area">
+            <button type="submit" class="fa-submit-btn">
+                <span class="fa-submit-icon">➤</span>
+                <span>Kirim Kehadiran</span>
+            </button>
+
+            <p class="fa-footer-note">
+                <span>✓</span>
+                Pastikan data kehadiran sudah benar sebelum dikirim.
+            </p>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+/* ======================================
+   JAM DIGITAL WITA
+====================================== */
+
+function updateDigitalClock() {
+    const now = new Date();
+
+    const waktu = new Intl.DateTimeFormat('id-ID', {
+        timeZone: 'Asia/Makassar',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    }).format(now);
+
+    const tanggal = new Intl.DateTimeFormat('id-ID', {
+        timeZone: 'Asia/Makassar',
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    }).format(now);
+
+    document.getElementById('digitalClock').textContent = waktu;
+    document.getElementById('clockDate').textContent = tanggal;
+
+    document.getElementById('headerDate').textContent =
+        new Intl.DateTimeFormat('id-ID', {
+            timeZone: 'Asia/Makassar',
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        }).format(now);
+}
+
+updateDigitalClock();
+setInterval(updateDigitalClock, 1000);
+
+
+/* ======================================
+   STATUS KEHADIRAN
+====================================== */
+
+const statusOptions = document.querySelectorAll('.fa-status-option');
+
+statusOptions.forEach(option => {
+    option.addEventListener('click', function () {
+        statusOptions.forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.fa-status-check').textContent = '○';
+        });
+
+        this.classList.add('active');
+        this.querySelector('.fa-status-check').textContent = '✓';
+    });
+});
+
+
+/* ======================================
+   TANDA TANGAN DIGITAL
+====================================== */
+
+const canvas = document.getElementById('signatureCanvas');
+const ctx = canvas.getContext('2d');
+
+let drawing = false;
+let hasSignature = false;
+
+function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const ratio = window.devicePixelRatio || 1;
+
+    const oldData = hasSignature ? canvas.toDataURL() : null;
+
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    ctx.strokeStyle = '#168b66';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    if (oldData) {
+        const img = new Image();
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0, rect.width, rect.height);
+        };
+        img.src = oldData;
+    }
+}
+
+resizeCanvas();
+
+window.addEventListener('resize', resizeCanvas);
+
+function getPosition(e) {
+    const rect = canvas.getBoundingClientRect();
+
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+
+canvas.addEventListener('pointerdown', function (e) {
+    drawing = true;
+    hasSignature = true;
+
+    canvas.setPointerCapture(e.pointerId);
+
+    const pos = getPosition(e);
+
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+});
+
+canvas.addEventListener('pointermove', function (e) {
+    if (!drawing) return;
+
+    const pos = getPosition(e);
+
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+});
+
+function stopDrawing() {
+    if (drawing) {
+        drawing = false;
+        document.getElementById('signatureData').value =
+            canvas.toDataURL('image/png');
+    }
+}
+
+canvas.addEventListener('pointerup', stopDrawing);
+canvas.addEventListener('pointercancel', stopDrawing);
+canvas.addEventListener('pointerleave', stopDrawing);
+
+
+/* ======================================
+   HAPUS TANDA TANGAN
+====================================== */
+
+document.getElementById('clearSignature')
+    .addEventListener('click', function () {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        hasSignature = false;
+
+        document.getElementById('signatureData').value = '';
+    });
+
+
+/* ======================================
+   VALIDASI FORM DEMO
+====================================== */
+
+document.getElementById('formAbsensi')
+    .addEventListener('submit', function (e) {
+
+        if (!hasSignature) {
+            e.preventDefault();
+            alert('Silakan bubuhkan tanda tangan terlebih dahulu.');
+            return;
+        }
+
+        /*
+         * Form ini masih berupa template tampilan.
+         * Hubungkan proses penyimpanan ke database
+         * sesuai struktur tabel presensi yang digunakan.
+         */
+        e.preventDefault();
+
+        alert('Form berhasil divalidasi. Proses penyimpanan database belum dihubungkan.');
+    });
+</script>
+
+<?php require ROOT_PATH . '/includes/layout_end.php'; ?>
